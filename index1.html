@@ -14,6 +14,30 @@
 
 <h1>This is a data visualization of Titanic in D3.js , Dataset available at kaggle.com</h1>
 
+		<div id='chartContainer2'>
+		<h2>Survivors by Passenger Class (Bar)</h2>
+
+		<script type="text/javascript">
+			var svg2 = dimple.newSvg('#chartContainer2', 600,400);
+			d3.csv('titanic1.csv', function(data) {
+			var ChartInstance = new dimple.chart(svg2,data);
+			ChartInstance.setBounds(60,30,510,305);
+			var x = ChartInstance.addCategoryAxis('x', 'Passenger Class');
+			// x.addOrderRule('Type');
+			var y = ChartInstance.addPctAxis('y', 'Count');
+			//y.showbycent = true;
+			//var y = ChartInstance.addMeasureAxis('y', 'Count');
+			var s = ChartInstance.addSeries("Status", dimple.plot.bar);
+			ChartInstance.addLegend(60, 10, 510, 20, "right");
+
+
+
+			ChartInstance.draw(1000);	
+
+			 });
+		</script>
+		</div>
+	
 	<div id='PiechartContainer1'>
 		<h2>Survivors by Gender (Pie chart)</h2>
 
@@ -28,31 +52,7 @@
 			ChartInstance.draw();
 			});
 		</script>
-	</div>
-
-  	<div id='chartContainer2'>
-	<h2>Survivors by Passenger Class (Bar)</h2>
-
- 	<script type="text/javascript">
- 	var svg2 = dimple.newSvg('#chartContainer2', 600,400);
- 		d3.csv('titanic1.csv', function(data) {
-   		var ChartInstance = new dimple.chart(svg2,data);
-  		ChartInstance.setBounds(60,30,510,305);
-  		var x = ChartInstance.addCategoryAxis('x', 'Passenger Class');
-       // x.addOrderRule('Type');
-  		var y = ChartInstance.addPctAxis('y', 'Count');
-  		//y.showbycent = true;
-  		//var y = ChartInstance.addMeasureAxis('y', 'Count');
-        var s = ChartInstance.addSeries("Status", dimple.plot.bar);
-        ChartInstance.addLegend(60, 10, 510, 20, "right");
-
-
- 		
-		ChartInstance.draw(1000);	
-
-		 });
-	</script>
-  	</div>
+	</div>  
   	
   	<div id='chartContainer4'>
 	<h2>Survivors by Age </h2>
