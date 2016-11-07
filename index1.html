@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<script src="/d3.v3.min.js"></script>
+  	<script src="/dimple.v2.1.2.min.js"></script>
+    <style>
+    body {
+      margin: 50px;
+    }
+    </style>
+ </head>
+ <body>
+
+<h1>This is a data visualization of Titanic in D3.js , Dataset available at kaggle.com</h1>
+
+	<div id='PiechartContainer1'>
+		<h2>Survivors by Gender (Pie chart)</h2>
+
+		<script type="text/javascript">
+			var svg1 = dimple.newSvg("#PiechartContainer1", 590, 400);
+			d3.csv("titanic_train.csv", function (data) {
+			var ChartInstance = new dimple.chart(svg1, data);
+			ChartInstance.setBounds(20, 20, 460, 360)
+			ChartInstance.addMeasureAxis("p", "Survived");
+			ChartInstance.addSeries("Sex", dimple.plot.pie);
+			ChartInstance.addLegend(500, 20, 90, 300, "left");
+			ChartInstance.draw();
+			});
+		</script>
+	</div>
+
+  	<div id='chartContainer2'>
+	<h2>Survivors by Passenger Class (Bar)</h2>
+
+ 	<script type="text/javascript">
+ 	var svg2 = dimple.newSvg('#chartContainer2', 600,400);
+ 		d3.csv('titanic1.csv', function(data) {
+   		var ChartInstance = new dimple.chart(svg2,data);
+  		ChartInstance.setBounds(60,30,510,305);
+  		var x = ChartInstance.addCategoryAxis('x', 'Passenger Class');
+       // x.addOrderRule('Type');
+  		var y = ChartInstance.addPctAxis('y', 'Count');
+  		//y.showbycent = true;
+  		//var y = ChartInstance.addMeasureAxis('y', 'Count');
+        var s = ChartInstance.addSeries("Status", dimple.plot.bar);
+        ChartInstance.addLegend(60, 10, 510, 20, "right");
+
+
+ 		
+		ChartInstance.draw(1000);	
+
+		 });
+	</script>
+  	</div>
+  	
+  	<div id='chartContainer4'>
+	<h2>Survivors by Age </h2>
+
+ 	<script type="text/javascript">
+ 	var svg4 = dimple.newSvg('#chartContainer4', 600,400);
+ 		d3.csv('titanic1.csv', function(data) {
+   		var ChartInstance = new dimple.chart(svg4,data);
+  		ChartInstance.setBounds(60,30,510,305);
+  		var x = ChartInstance.addCategoryAxis('x', 'Age');
+       // x.addOrderRule('Type');
+  		var y = ChartInstance.addPctAxis('y', 'Count');
+  		//y.showbycent = true;
+  		//var y = ChartInstance.addMeasureAxis('y', 'Count');
+        var s = ChartInstance.addSeries("Status", dimple.plot.bar);
+        ChartInstance.addLegend(60, 10, 510, 20, "right");
+
+
+
+ 		
+		ChartInstance.draw(1000);	
+
+		 });
+</script>
+  	</div>
+ 
+	<div id='chartContainer8'>
+	<h2>Survivors by Embarked </h2>
+
+	<script type="text/javascript">
+	var svg8 = dimple.newSvg('#chartContainer8', 600,400);
+	d3.csv('titanic1.csv', function(data) {
+	var ChartInstance = new dimple.chart(svg8,data);
+	ChartInstance.setBounds(60,30,510,305);
+	var x = ChartInstance.addCategoryAxis('x', 'Embarked');
+	// x.addOrderRule('Type');
+	var y = ChartInstance.addPctAxis('y', 'Count');
+	//y.showbycent = true;
+	//var y = ChartInstance.addMeasureAxis('y', 'Count');
+	var s = ChartInstance.addSeries("Status", dimple.plot.bar);
+	ChartInstance.addLegend(60, 10, 510, 20, "right");
+
+
+
+		ChartInstance.draw(1000); 
+
+
+	});
+	</script>
+	</div>
+	
+		<div id='PiechartContainer2'>
+		<h2>Survivors by Embarked (Pie chart)</h2>
+
+		<script type="text/javascript">
+			var svg9 = dimple.newSvg("#PiechartContainer2", 590, 400);
+			d3.csv("titanic_train.csv", function (olddata) {
+			data =modify_data(olddata);			 
+			var ChartInstance = new dimple.chart(svg9, data);
+			ChartInstance.setBounds(20, 20, 460, 360)
+			ChartInstance.addMeasureAxis("p", "Survived");
+			ChartInstance.addSeries("Embarked", dimple.plot.pie);
+			ChartInstance.addLegend(500, 20, 90, 300, "left");
+			ChartInstance.draw();
+			});
+		</script>
+		
+		<script type="text/javascript">
+		    var ctr = 0;
+			function modify_data(data){
+				data.forEach(myFunction);	
+				return data;				
+			};
+			function myFunction(item) {
+			    if((item["Embarked"])=='S'){
+					(item["Embarked"])='Southampton';
+				} 
+				else if((item["Embarked"])=='C'){
+					(item["Embarked"])='Cherbourg';
+							} 	
+				else if((item["Embarked"])=='Q'){
+					(item["Embarked"])='Queenstown';
+				} 		
+				else {
+					(item["Embarked"])='NA';
+				};				
+			}
+		</script>
+	</div>
+
+ </body>
+ </html>
