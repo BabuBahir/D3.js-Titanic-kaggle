@@ -1,6 +1,8 @@
 # D3.js-Titanic-kaggle
 A simple data Visualization of Titanic dataset using d3.js
 
+Demo at https://rohit-titanic-d3.herokuapp.com/
+
 The Titanic Dataset , one of the most popular Dataset on Kaggle.com , used for Machine Learning & Data Modelling practice .
 Many Visualization  are available with matplotlib , R or SAS
 
